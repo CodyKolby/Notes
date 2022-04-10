@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link href="/public/style.css" rel="stylesheet" type="text/css" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="index.js"></script>
+    <script>
+      function handleDeletePost(id) {
+        console.log(id);
+        window.location = `http://localhost:3000/notes/delete/` + id
+      }
+    </script>
+    <h1 class="notatki">Notatki</h1>
+    <% if (notes.length > 0) { %>
+    <h3>
+      <% for(let i=0; i<notes.length; i++) {%>
+        <tr>
+          <form class="note">
+           <h3 class="noteTitle">
+             <%- notes[i].title[0].toUpperCase() + notes[i].title.slice(1) %>
+           </h3>
+           <h4 class="noteDescription"><%- notes[i].description[0].toUpperCase() + notes[i].description.slice(1)%></h4>
+           <button class="deleteBtn" type="button" onclick="handleDeletePost(`<%- notes[i]._id %>`)"><img src="../public/bin (2).png" height="30" width="30"/></button>
+          </form>
+        </tr>
+     <% }%>
+    </h3>
+    <% } else { %>
+      <h3>Brak notatek</h3>
+      <% } %>
+    <form action="/notatki/index.js" method="post">
+      <input
+        type="button"
+        value="Add new note"
+        onclick="window.location = `http://localhost:3000/notes`"
+      />
+    </form>
+  </body>
+</html>

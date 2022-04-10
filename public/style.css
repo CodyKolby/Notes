@@ -1,0 +1,73 @@
+.title {
+  font-family: "Noto Sans", sans-serif;
+  color: #505050;
+}
+
+.titleInput {
+  position: absolute;
+}
+
+.descriptionInput {
+  size: 50px;
+  resize: none;
+  width: 500px;
+  height: 200px;
+  position: relative;
+  transform: translateY(20%);
+}
+
+.addBtn {
+  font-family: "Noto Sans", sans-serif;
+  color: #505050;
+  width: 100px;
+  height: 30px;
+  display: block;
+  position: relative;
+  transform: translateY(220%);
+}
+
+.note {
+  border: 2px solid black;
+  position: relative;
+  bottom: 0;
+  left: 0;
+  height: 50%;
+  width: 400px;
+  margin: 10px;
+  border-radius: 25px;
+  padding: 20px;
+  resize: vertical;
+  display: flex;
+  flex-direction: column;
+  min-height: 50%;
+  max-height: 100%;
+  min-width: 400px;
+  max-width: 800px;
+}
+
+.noteTitle {
+  font-family: "Noto Sans", sans-serif;
+  color: #353535;
+  font-size: 25px;
+  transform: translateY(-90%);
+}
+
+.noteDescription {
+  font-family: "Noto Sans", sans-serif;
+  color: #505050;
+  transform: translateY(-90%);
+  word-wrap: break-word;
+}
+
+.notatki {
+  font-family: "Noto Sans", sans-serif;
+  color: #505050;
+}
+
+.deleteBtn {
+  color: red;
+  transform: translateX(0%);
+  border: none;
+  margin-right: 300px;
+  transform: translateX(300%);
+}
