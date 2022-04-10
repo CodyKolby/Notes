@@ -2,8 +2,6 @@ const express = require("express");
 const router = new express.Router();
 const Note = require(`../models/note`);
 const mongoose = require("mongoose");
-const { db } = require("../models/note");
-const { append } = require("express/lib/response");
 
 mongoose.connect("mongodb://127.0.0.1:27017/task-manager-api");
 
@@ -68,36 +66,14 @@ router.get("/notes/delete/:id", async (req, res) => {
   const id = req.params.id;
 
   try {
-    Note.findByIdAndDelete(id, (err, docs) => {
-      if (err) {
-        res.redirect("/");
-        res.render("../public/main.ejs", {
-          notes: 0,
-        });
-      } else {
-        const notes = Note.find({})
-          .then((notes) => {
-            if (notes.length > 0) {
-              res.render("../public/main.ejs", {
-                notes: notes,
-              });
-              res.redirect("/");
-            } else {
-              res.render("../public/main.ejs", {
-                notes: 0,
-              });
-              res.redirect("/");
-            }
-          })
-          .catch((e) => {
-            console.log(`blad 3`);
-          });
-        console.log(`deleted`, docs);
-      }
-    });
-  } catch (e) {
-    console.log(`blad 4`);
-  }
+    let response = await Note.findByIdAndDelete(id);
+    console.log(response);
+    res.redirect("back");
+  } catch (e) {}
+});
+
+router.post("/notes/delete/:id", async (req, res) => {
+  await res.redirect("");
 });
 
 module.exports = router;
